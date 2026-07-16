@@ -58,11 +58,11 @@ Rank,Ticker,Name,Region
 57,RAVE,"Rave Restaurant Group, Inc.",US
 58,BTBD,"BT Brands, Inc.",US
 59,BABB,"BAB, Inc.",US
-60,JUBLFOOD,Jubilant FoodWorks Limited,India
-61,WESTLIFE,Westlife Foodworld Ltd,India
-62,RBA,Restaurant Brands Asia Ltd,India
-63,DEVYANI,Devyani International Ltd,India
-64,SAPPHIRE,Sapphire Foods India Ltd,India
+60,JUBLFOOD.NS,Jubilant FoodWorks Limited,India
+61,WESTLIFE.NS,Westlife Foodworld Ltd,India
+62,RBA.NS,Restaurant Brands Asia Ltd,India
+63,DEVYANI.NS,Devyani International Ltd,India
+64,SAPPHIRE.NS,Sapphire Foods India Ltd,India
 65,GRG.L,Greggs plc,UK
 66,ALMR,Americana Restaurants,UAE
 67,6862.HK,Haidilao International,Hong Kong
@@ -82,9 +82,9 @@ Rank,Ticker,Name,Region
 81,1350.HK,Buns and Rolls Group,Hong Kong
 82,1978.HK,LH Group Limited,Hong Kong
 83,1445.HK,Tang Palace Restaurant,Hong Kong
-84,5OI.SG,Japan Foods Holding Ltd.,Singapore
-85,42R.SG,Jumbo Group Limited,Singapore
-86,1D0.SG,Kimly Limited,Singapore
+84,5OI.SI,Japan Foods Holding Ltd.,Singapore
+85,42R.SI,Jumbo Group Limited,Singapore
+86,1D0.SI,Kimly Limited,Singapore
 87,SRG.AX,Strategic Elements Rest.,Australia
 88,TWR.NZ,Tower Restaurant Group,New Zealand
 89,RFG.AX,Retail Food Group Limited,Australia

@@ -46,7 +46,7 @@ def export_yearly_stock_summary(ticker_symbol):
     yearly_df['YoY_Avg_Price_Diff'] = yearly_df['Average_Price'].diff()
     
     # Define and ensure directory exists
-    output_dir = "./data/stocks"
+    output_dir = "obesity_x_stock/data/stocks"
     os.makedirs(output_dir, exist_ok=True)
     
     # Save the file to the specific folder structure
@@ -55,3 +55,6 @@ def export_yearly_stock_summary(ticker_symbol):
     
     print(f"Successfully exported data to: {output_path}")
     return yearly_df
+
+if __name__ == "__main__":
+    export_yearly_stock_summary("MCD")
