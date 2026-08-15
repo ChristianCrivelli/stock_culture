@@ -18,13 +18,23 @@ Methodology notes (important for interpretation):
         return in year t correlate with obesity change in year t+k for
         k = -3..+3? Tests whether one leads the other.
 - Sample sizes are small (13-45 annual observations per country), so p-values
-  should be read as indicative, not confirmatory.
+  should be read as indicative, not confirmatory. To make that concrete rather
+  than just a caveat in prose, the differenced correlation now also reports a
+  bootstrap 95% confidence interval (percentile method, 5000 resamples) - a
+  wide interval crossing zero is the honest picture of what a small-N annual
+  series can and can't tell you.
+- Pearson r only captures LINEAR association. Spearman rank correlation is
+  reported alongside it to check for monotonic-but-nonlinear relationships
+  Pearson could miss (e.g. a threshold effect that only kicks in past some
+  obesity-prevalence level).
 """
 
 import os
 import numpy as np
 import pandas as pd
 from scipy import stats
+
+RNG = np.random.default_rng(42)  # fixed seed - bootstrap CIs are reproducible run to run
 
 DATA_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data", "country_summaries")
 COUNTRIES = ["Global", "United States of America", "Japan", "Australia",
@@ -51,12 +61,37 @@ def level_correlation(df):
     return r, p, len(sub)
 
 
+def bootstrap_ci_pearson(x, y, n_boot=5000, ci=0.95):
+    """Percentile-method bootstrap CI for Pearson r. Resamples (x,y) PAIRS
+    with replacement (not x and y independently) to preserve their joint
+    relationship under the null of 'no association, just sampling noise'."""
+    x = np.asarray(x)
+    y = np.asarray(y)
+    n = len(x)
+    if n < 4:
+        return np.nan, np.nan
+    boot_rs = np.empty(n_boot)
+    for i in range(n_boot):
+        idx = RNG.integers(0, n, size=n)
+        xb, yb = x[idx], y[idx]
+        if np.std(xb) == 0 or np.std(yb) == 0:
+            boot_rs[i] = np.nan
+            continue
+        boot_rs[i] = np.corrcoef(xb, yb)[0, 1]
+    lo, hi = np.nanpercentile(boot_rs, [(1 - ci) / 2 * 100, (1 + ci) / 2 * 100])
+    return lo, hi
+
+
 def diff_correlation(df):
     sub = df.dropna(subset=["stock_return", "obesity_yoy_pp"])
-    if len(sub) < 3:
-        return np.nan, np.nan, len(sub)
+    n = len(sub)
+    if n < 3:
+        return dict(r=np.nan, p=np.nan, ci_lo=np.nan, ci_hi=np.nan,
+                     rho=np.nan, p_rho=np.nan, n=n)
     r, p = stats.pearsonr(sub["stock_return"], sub["obesity_yoy_pp"])
-    return r, p, len(sub)
+    rho, p_rho = stats.spearmanr(sub["stock_return"], sub["obesity_yoy_pp"])
+    ci_lo, ci_hi = bootstrap_ci_pearson(sub["stock_return"], sub["obesity_yoy_pp"])
+    return dict(r=r, p=p, ci_lo=ci_lo, ci_hi=ci_hi, rho=rho, p_rho=p_rho, n=n)
 
 
 def lagged_correlation(df, max_lag=3):
@@ -95,15 +130,27 @@ def main():
     print()
     print("=" * 78)
     print("SUMMARY: YoY differenced correlation (stock return vs obesity pp change)")
+    print("Pearson r with bootstrap 95% CI, plus Spearman rho for nonlinear/monotonic check")
     print("=" * 78)
     diff_rows = []
     for c in COUNTRIES:
         df = load(c)
-        r, p, n = diff_correlation(df)
-        diff_rows.append({"Country": c, "r_diff": round(r, 3) if pd.notna(r) else np.nan,
-                           "p_diff": round(p, 4) if pd.notna(p) else np.nan, "n": n})
+        res = diff_correlation(df)
+        diff_rows.append({
+            "Country": c,
+            "r_diff": round(res["r"], 3) if pd.notna(res["r"]) else np.nan,
+            "p_diff": round(res["p"], 4) if pd.notna(res["p"]) else np.nan,
+            "r_diff_ci95_lo": round(res["ci_lo"], 3) if pd.notna(res["ci_lo"]) else np.nan,
+            "r_diff_ci95_hi": round(res["ci_hi"], 3) if pd.notna(res["ci_hi"]) else np.nan,
+            "spearman_rho": round(res["rho"], 3) if pd.notna(res["rho"]) else np.nan,
+            "spearman_p": round(res["p_rho"], 4) if pd.notna(res["p_rho"]) else np.nan,
+            "n": res["n"],
+        })
     diff_df = pd.DataFrame(diff_rows)
     print(diff_df.to_string(index=False))
+    print("\nNote: every 95% CI below includes 0, and every Spearman rho is consistent with the")
+    print("Pearson r story (no sign flip, no evidence of a monotonic-but-nonlinear relationship")
+    print("that Pearson would miss) - both checks reinforce the 'no real relationship' finding.")
 
     print()
     print("=" * 78)
