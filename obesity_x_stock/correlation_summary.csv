@@ -1,0 +1,15 @@
+Country,r_level,p_level,n,years,r_diff,p_diff
+Australia,,,18,,0.165,0.5138
+Australia,0.916,0.0,19,2006-2024,,
+Global,,,44,,-0.149,0.334
+Global,0.971,0.0,45,1980-2024,,
+India,,,13,,-0.135,0.6606
+India,0.937,0.0,14,2011-2024,,
+Japan,,,23,,0.129,0.5573
+Japan,0.97,0.0,24,2001-2024,,
+Singapore,,,14,,-0.366,0.1984
+Singapore,0.632,0.0115,15,2010-2024,,
+United Kingdom,,,35,,0.156,0.3717
+United Kingdom,0.968,0.0,36,1989-2024,,
+United States of America,,,44,,0.126,0.4158
+United States of America,0.991,0.0,45,1980-2024,,

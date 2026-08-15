@@ -1,0 +1,32 @@
+<div style="display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 12px; font-size: 12px; color: var(--text-secondary);">
+  <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 10px; height: 10px; border-radius: 2px; background: #2a78d6;"></span>Level correlation (raw index vs obesity %)</span>
+  <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 10px; height: 10px; border-radius: 2px; background: #eb6834;"></span>Differenced correlation (YoY return vs YoY obesity change)</span>
+</div>
+<div style="position: relative; width: 100%; height: 340px;">
+  <canvas id="corrChart" role="img" aria-label="Bar chart comparing level correlation to differenced correlation of stock index versus obesity prevalence across seven countries. Level correlations range from 0.63 to 0.99. Differenced correlations range from -0.37 to 0.17 and are not statistically significant.">Level r: Global 0.97, US 0.99, Japan 0.97, Australia 0.92, UK 0.97, Singapore 0.63, India 0.94. Differenced r: Global -0.15, US 0.13, Japan 0.13, Australia 0.17, UK 0.16, Singapore -0.37, India -0.14.</canvas>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const labels = ['Global','US','Japan','Australia','UK','Singapore','India'];
+const level = [0.971, 0.991, 0.970, 0.916, 0.968, 0.632, 0.937];
+const diffr = [-0.149, 0.126, 0.129, 0.165, 0.156, -0.366, -0.135];
+new Chart(document.getElementById('corrChart'), {
+  type: 'bar',
+  data: {
+    labels: labels,
+    datasets: [
+      { label: 'Level r', data: level, backgroundColor: '#2a78d6', borderRadius: 4 },
+      { label: 'Diff r', data: diffr, backgroundColor: '#eb6834', borderRadius: 4 }
+    ]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { min: -0.5, max: 1, grid: { color: '#e1e0d9' }, ticks: { color: '#898781' } },
+      x: { grid: { display: false }, ticks: { color: '#898781' } }
+    }
+  }
+});
+</script>

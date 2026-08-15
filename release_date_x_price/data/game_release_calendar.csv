@@ -1,0 +1,25 @@
+Ticker,Company,Title,Release_Date,Tier,Confidence,Notes
+TTWO,Take-Two Interactive,Grand Theft Auto IV,2008-04-29,Major,High,
+TTWO,Take-Two Interactive,Grand Theft Auto V,2013-09-17,Major,High,Best-selling entertainment product in history at the time
+TTWO,Take-Two Interactive,Red Dead Redemption 2,2018-10-26,Major,High,
+EA,Electronic Arts,Star Wars Jedi: Fallen Order,2019-11-15,Minor,High,
+EA,Electronic Arts,Apex Legends,2019-02-04,Major,High,Surprise launch - good natural experiment (no pre-announcement hype window)
+EA,Electronic Arts,Battlefield 2042,2021-11-19,Minor,High,Notably poor critical reception - useful negative-event comparison
+UBI.PA,Ubisoft,Assassin's Creed Odyssey,2018-10-05,Minor,High,
+UBI.PA,Ubisoft,Assassin's Creed Valhalla,2020-11-10,Major,High,
+CDR.WA,CD Projekt,The Witcher 3: Wild Hunt,2015-05-19,Major,High,
+CDR.WA,CD Projekt,Cyberpunk 2077,2020-12-10,Major,High,Launched broken on last-gen consoles - stock fell sharply after - useful negative-event case
+7974.T,Nintendo,Nintendo Switch console + Breath of the Wild,2017-03-03,Major,High,Console launch bundled with flagship title
+7974.T,Nintendo,Super Mario Odyssey,2017-10-27,Minor,High,
+7974.T,Nintendo,Animal Crossing: New Horizons,2020-03-20,Major,High,Released just as COVID lockdowns began - confound to flag explicitly
+7974.T,Nintendo,The Legend of Zelda: Tears of the Kingdom,2023-05-12,Major,High,
+9697.T,Capcom,Monster Hunter World,2018-01-26,Major,High,
+9697.T,Capcom,Resident Evil Village,2021-05-07,Minor,High,
+9697.T,Capcom,Street Fighter 6,2023-06-02,Minor,High,
+9684.T,Square Enix Holdings,Final Fantasy VII Remake,2020-04-10,Major,High,
+9684.T,Square Enix Holdings,Final Fantasy XVI,2023-06-22,Minor,High,
+7832.T,Bandai Namco Holdings,Elden Ring,2022-02-25,Major,High,Published by Bandai Namco; developed by FromSoftware (third party)
+259960.KS,Krafton,PUBG: Battlegrounds (full release),2017-12-21,Major,Medium,Early access launched Mar 2017; IPO of Krafton itself was Aug 2021 so pre-IPO events unusable for stock analysis
+ATVI,Activision Blizzard,Call of Duty: Modern Warfare (2019),2019-10-25,Major,High,
+ATVI,Activision Blizzard,Overwatch,2016-05-24,Major,High,
+ATVI,Activision Blizzard,Diablo IV,2023-06-06,Major,High,

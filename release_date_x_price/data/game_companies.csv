@@ -1,0 +1,13 @@
+Ticker,Company,Country,Primary_Activity,Notes
+TTWO,Take-Two Interactive,United States,Publisher (Rockstar; 2K),GTA/RDR/NBA 2K
+EA,Electronic Arts,United States,Publisher,FIFA/EA Sports FC/Battlefield/Apex
+UBI.PA,Ubisoft,France,Publisher (Assassin's Creed etc),Euronext Paris listing
+CDR.WA,CD Projekt,Poland,Developer/Publisher (Witcher/Cyberpunk),Warsaw Stock Exchange listing
+7974.T,Nintendo,Japan,Platform + first-party developer/publisher,Console maker but primary activity is games; keep; flag as edge case
+9697.T,Capcom,Japan,Developer/Publisher (Resident Evil/Monster Hunter),Tokyo Stock Exchange
+9684.T,Square Enix Holdings,Japan,Developer/Publisher (Final Fantasy/Dragon Quest),Tokyo Stock Exchange
+7832.T,Bandai Namco Holdings,Japan,Developer/Publisher + toys,Games is majority but not 100% of revenue; flag as edge case
+6460.T,Sega Sammy Holdings,Japan,Developer/Publisher + pachinko,Games is a large but not sole segment; flag as edge case
+259960.KS,Krafton,South Korea,Developer/Publisher (PUBG),Korea Exchange (KOSPI) listing
+036570.KS,NCSOFT,South Korea,Developer/Publisher (Lineage/Guild Wars),Korea Exchange (KOSPI) listing
+ATVI,Activision Blizzard,United States,Publisher (Call of Duty/Warcraft/Diablo),Acquired by Microsoft and delisted Oct 2023 - usable only for pre-2023 events
